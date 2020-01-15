@@ -1,27 +1,27 @@
-import { prop, Ref } from '@typegoose/typegoose'
-import { IsNotEmpty } from 'class-validator'
-import { ApiModelProperty } from '@nestjs/swagger'
-import { hashSync } from 'bcryptjs'
-import { Group } from './group.model'
+import { prop, Ref } from '@typegoose/typegoose';
+import { IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { hashSync } from 'bcryptjs';
+import { Group } from './group.model';
 
 export class User {
-  @ApiModelProperty({ required: true })
+  @ApiProperty({})
   @IsNotEmpty({})
   @prop()
-  username: string
+  username: string;
 
-  @ApiModelProperty({ required: false })
+  @ApiProperty({})
   @prop({
     select: false,
     get(val) {
-      return val
+      return val;
     },
     set(val) {
-      return val && hashSync(val)
-    }
+      return val && hashSync(val);
+    },
   })
-  password: string
+  password: string;
 
-  @prop({ ref: "Group" })
-  group: Ref<Group>
+  @prop({ ref: 'Group' })
+  group: Ref<Group>;
 }

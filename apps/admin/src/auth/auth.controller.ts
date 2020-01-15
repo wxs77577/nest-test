@@ -1,27 +1,24 @@
 import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 import { AuthGuard } from '@nestjs/passport';
 import { LOCAL_USER_STRATEGY } from 'libs/auth/src/constants';
 import { AuthService } from 'libs/auth/src';
 
 class LoginDto {
-  @ApiModelProperty()
+  @ApiProperty()
   @IsNotEmpty()
-  username: string
+  username: string;
 
-  @ApiModelProperty()
+  @ApiProperty()
   @IsNotEmpty()
-  password: string
+  password: string;
 }
 
 @Controller()
 export class AuthController {
-  constructor(
-    // private authService: AuthService
-  ) { 
-    
-  }
+  constructor() // private authService: AuthService
+  {}
 
   // @Post('login')
   // @UseGuards(AuthGuard(LOCAL_USER_STRATEGY))
